@@ -33,12 +33,14 @@
                 <tr>
                     <th>Nome</th>
                     <th>Acompanhantes</th>
+                    <th>Data</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="convidado : ${convidados}">
                     <td th:text="${convidado.nome}"></td>
                     <td th:text="${convidado.quantidadeAcompanhantes}"></td>
+
                 </tr>
                 </tbody>
             </table>

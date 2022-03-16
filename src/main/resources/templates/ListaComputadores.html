@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Lista de computadores</title>
+
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet"/>
+    <link th:href="@{webjars/bootstrap/css/bootstrap-theme.min.css}"
+          rel="stylesheet"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <form class="form-inline" method="POST" th:object="${computador}" th:action="@{/computadores}" style="margin: 20px 0">
+        <div class="form-group">
+            <input type="number" class="form-control" placeholder="Número de patrimônio" th:field="*{nPatrimonio}"/>
+            <input type="text" class="form-control" placeholder="Nome da pessoa" th:field="*{nomePessoa}"/>
+            <input type="text" class="form-control" placeholder="Local de retirada" th:field="*{localRetirada}"/>
+            <input type="text" class="form-control" placeholder="Local de devolução" th:field="*{localDevolucao}"/>
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+        </div>
+    </form>
+
+    <div class="panel panel-default" style="margin: 10px">
+        <div class="panel-heading">
+            <h1 class="panel-title">Lista de computadores</h1>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Número do patrimônio</th>
+                    <th>Nome da pessoa</th>
+                    <th>Local de retirada</th>
+                    <th>Local de devolução</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="computador : ${computadores}">
+                    <td th:text="${computador.nPatrimonio}"></td>
+                    <td th:text="${computador.nomePessoa}"></td>
+                    <td th:text="${computador.localRetirada}"></td>
+                    <td th:text="${computador.localDevolucao}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
